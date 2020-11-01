@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,8 +28,9 @@ public class PostController {
     }
 
     @PostMapping("/save-post")
-    void savePost(@ModelAttribute Post post){
+    ModelAndView savePost(@ModelAttribute Post post){
         service.savePost(post);
+        return new ModelAndView("redirect:/show-posts");
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class PostService {
     }
 
     public Post savePost(Post post){
+        post.setCreated(new Date());
         return repository.save(post);
     }
 }

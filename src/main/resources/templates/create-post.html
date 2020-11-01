@@ -5,9 +5,9 @@
     <title>Create Post</title>
 </head>
 <body>
-<form>
+<form th:action="@{/save-post}" th:object="${post}" method="post">
     <textarea name="text"></textarea>
-
+    <input type="submit">
 </form>
 </body>
 </html>
