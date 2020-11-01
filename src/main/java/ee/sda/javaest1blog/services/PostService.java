@@ -19,4 +19,8 @@ public class PostService {
         repository.findAll().forEach(postList::add);
         return postList;
     }
+
+    public Post savePost(Post post){
+        return repository.save(post);
+    }
 }
