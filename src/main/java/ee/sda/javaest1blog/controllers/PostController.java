@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,18 @@ public class PostController {
     @PostMapping("/save-post")
     ModelAndView savePost(@ModelAttribute Post post){
         service.savePost(post);
+        return new ModelAndView("redirect:/show-posts");
+    }
+
+    @GetMapping("/edit-post/{postId}")
+    String editPost(@PathVariable String postId, Model model){
+        model.addAttribute(service.getPostById(postId));
+        return "edit-post";
+    }
+
+    @GetMapping("/delete-post/{postId}")
+    ModelAndView deletePost(@PathVariable String postId){
+        service.deletePost(postId);
         return new ModelAndView("redirect:/show-posts");
     }
 

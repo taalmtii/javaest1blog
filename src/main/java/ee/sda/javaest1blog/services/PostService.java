@@ -21,8 +21,19 @@ public class PostService {
         return postList;
     }
 
+    public Post getPostById(String id){
+        return repository.findById(Long.valueOf(id)).get();
+    }
+
     public Post savePost(Post post){
-        post.setCreated(new Date());
+        post.setUpdated(new Date());
+        if(post.getId() != null){
+            post.setCreated(new Date());
+        }
         return repository.save(post);
+    }
+
+    public void deletePost(String postId){
+        repository.deleteById(Long.valueOf(postId));
     }
 }

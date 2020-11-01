@@ -5,8 +5,18 @@
     <title>Posts</title>
 </head>
 <body>
+<script>
+    redirect = function(id){
+        window.location.replace('/edit-post/' + id);
+    };
+    delete = function(id){
+        window.location.replace('/delete-post/' + id);
+    };
+</script>
 <div th:each="post : ${posts}">
     <p th:text="${post.text}"></p>
+    <button th:onclick="'javascript:redirect(' + {post.id}$ + ')'">Edit</button>
+    <button th:onclick="'javascript:delete(' + {post.id}$ + ')'">Delete</button>
 </div>
 </body>
 </html>
