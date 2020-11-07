@@ -3,8 +3,10 @@ package ee.sda.javaest1blog.services;
 import ee.sda.javaest1blog.entities.Post;
 import ee.sda.javaest1blog.repositories.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 public class PostService {
 
     final PostRepository repository;
+    final UserService userService;
 
     public List<Post> getAllPosts(){
         List<Post> postList = new ArrayList<>();
@@ -26,6 +29,8 @@ public class PostService {
     }
 
     public Post savePost(Post post){
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        post.setUser(userService.findByUsername(principal.getName()));
         post.setUpdated(new Date());
         if(post.getId() != null){
             post.setCreated(new Date());

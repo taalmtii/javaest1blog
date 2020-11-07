@@ -1,6 +1,8 @@
 package ee.sda.javaest1blog.controllers;
 
 import ee.sda.javaest1blog.entities.Post;
+import ee.sda.javaest1blog.entities.User;
+import ee.sda.javaest1blog.repositories.UserRepository;
 import ee.sda.javaest1blog.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -8,12 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/posts")
 public class PostController {
 
     final PostService service;
+    final UserRepository userRepository;
+
 
     @GetMapping("/show-posts")
     String showPosts(Model model){

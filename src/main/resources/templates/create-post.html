@@ -5,6 +5,7 @@
     <title>Create Post</title>
 </head>
 <body>
+<span th:text="${user}"></span>
 <form th:action="@{/posts/save-post}" th:object="${post}" method="post">
     <textarea name="text"></textarea>
     <input type="submit">
