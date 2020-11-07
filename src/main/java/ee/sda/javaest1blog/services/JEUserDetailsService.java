@@ -18,4 +18,5 @@ public class JEUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return new JEUserDetails(userRepository.findByUsername(s));
     }
+
 }
