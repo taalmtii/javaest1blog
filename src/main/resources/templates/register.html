@@ -4,15 +4,17 @@
 </head>
 <body>
 <div>
-    <form name="f" th:action="@{/login}" method="post">
+    <form name="f" th:action="@{/register}" th:object="${user}" method="post">
         <fieldset>
-            <legend>Please Login</legend>
+            <legend>Username</legend>
             <label for="username">Username</label>
             <input type="text" id="username" name="username"/>
             <label for="password">Password</label>
             <input type="password" id="password" name="password"/>
+            <label for="email">E-mail</label>
+            <input type="text" id="email" name="email"/>
             <div class="form-actions">
-                <button type="submit" class="btn">Log in</button>
+                <button type="submit" class="btn">Register</button>
             </div>
         </fieldset>
     </form>
