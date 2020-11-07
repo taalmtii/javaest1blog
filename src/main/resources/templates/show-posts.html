@@ -7,10 +7,10 @@
 <body>
 <script>
     redirectEdit = function(id){
-        window.location.replace('/edit-post/' + id);
+        window.location.replace('/posts/edit-post/' + id);
     };
     deletePost = function(id){
-        window.location.replace('/delete-post/' + id);
+        window.location.replace('/posts/delete-post/' + id);
     };
 </script>
 <div th:each="post : ${posts}">

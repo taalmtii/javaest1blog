@@ -5,7 +5,7 @@
     <title>Edit Post</title>
 </head>
 <body>
-<form th:action="@{/save-post}" th:object="${post}" method="post">
+<form th:action="@{/posts/save-post}" th:object="${post}" method="post">
     <input type="hidden" name="id"  th:value="${post.id}">
     <textarea name="text">[[${post.text}]]</textarea>
     <input type="submit">
