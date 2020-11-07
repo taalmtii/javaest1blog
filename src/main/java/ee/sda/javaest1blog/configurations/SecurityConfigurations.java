@@ -26,7 +26,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/posts/show-posts").permitAll()
                 .antMatchers("/posts/*").authenticated()
-                .and().formLogin().permitAll();
+                .and().formLogin()
+                .loginPage("/login")
+                .permitAll();
     }
 
     @Override
