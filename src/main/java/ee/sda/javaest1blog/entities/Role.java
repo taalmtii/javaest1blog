@@ -16,11 +16,16 @@ public class Role {
     Long id;
     String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "role_user",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     List<User> users;
+
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    List<Privilege> privileges;
+
+
 }

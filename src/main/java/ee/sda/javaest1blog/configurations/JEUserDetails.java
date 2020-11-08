@@ -20,6 +20,9 @@ public class JEUserDetails implements UserDetails {
         Set<GrantedAuthority> roles = new HashSet<>();
         user.getRoles().stream().forEach(role -> {
             roles.add(new SimpleGrantedAuthority(role.getName()));
+            role.getPrivileges().forEach(privilege -> {
+                roles.add(new SimpleGrantedAuthority(privilege.getName()));
+            });
         });
         return roles;
     }
