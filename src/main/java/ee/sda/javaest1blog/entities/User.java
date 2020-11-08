@@ -5,10 +5,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -31,5 +28,8 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     List<Post> postList;
+
+    @ManyToMany(mappedBy = "users")
+    List<Role> roles;
 
 }

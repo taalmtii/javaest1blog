@@ -3,9 +3,12 @@ package ee.sda.javaest1blog.configurations;
 import ee.sda.javaest1blog.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @RequiredArgsConstructor
 public class JEUserDetails implements UserDetails {
@@ -14,7 +17,11 @@ public class JEUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> roles = new HashSet<>();
+        user.getRoles().stream().forEach(role -> {
+            roles.add(new SimpleGrantedAuthority(role.getName()));
+        });
+        return roles;
     }
 
     @Override
