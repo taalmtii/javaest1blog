@@ -29,7 +29,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Post> postList;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     List<Role> roles;
 
 }
